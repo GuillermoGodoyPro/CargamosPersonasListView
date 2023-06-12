@@ -10,10 +10,12 @@ import android.widget.Toast
 
 class MainActivity : AppCompatActivity() {
 
+    //Declaracion de ojbetos lateint var: Declara variables que no se inicializan hasta que sean usadas
     private lateinit var nombre: EditText
     private lateinit var apellido: EditText
     private lateinit var buttonSend: Button
     private lateinit var listPerson: ListView
+    //TODO: declarar un button mas aca
 
     private val personList = arrayListOf<String>()
 
@@ -24,6 +26,8 @@ class MainActivity : AppCompatActivity() {
         nombre = findViewById<EditText>(R.id.edNombre)
         apellido = findViewById<EditText>(R.id.edApellido)
         buttonSend = findViewById<Button>(R.id.btSend)
+        //TODO: INICIALIZAR el button mas aca
+
         // para trabajar con el adapter
         listPerson = findViewById<ListView>(R.id.idListView)
 
