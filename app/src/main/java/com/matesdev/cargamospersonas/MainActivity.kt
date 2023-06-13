@@ -1,5 +1,6 @@
 package com.matesdev.cargamospersonas
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ArrayAdapter
@@ -14,8 +15,9 @@ class MainActivity : AppCompatActivity() {
     private lateinit var nombre: EditText
     private lateinit var apellido: EditText
     private lateinit var buttonSend: Button
+    private lateinit var buttonEnviar: Button
     private lateinit var listPerson: ListView
-    //TODO: declarar un button mas aca
+
 
     private val personList = arrayListOf<String>()
 
@@ -26,7 +28,8 @@ class MainActivity : AppCompatActivity() {
         nombre = findViewById<EditText>(R.id.edNombre)
         apellido = findViewById<EditText>(R.id.edApellido)
         buttonSend = findViewById<Button>(R.id.btSend)
-        //TODO: INICIALIZAR el button mas aca
+        buttonEnviar = findViewById<Button>(R.id.btEnviar)
+
 
         // para trabajar con el adapter
         listPerson = findViewById<ListView>(R.id.idListView)
@@ -40,8 +43,11 @@ class MainActivity : AppCompatActivity() {
             //se da la orden para que, lo que suceda dentro del adapter, seguarde dentro de listPerson y pueda ser mostrado en el list view
             listPerson.adapter = adapterPersonas
 
+
+
             if( nombre.text.isEmpty() || apellido.text.isEmpty()){
                 Toast.makeText(this, "Por favor ingrese el nombre y/o apellido", Toast.LENGTH_SHORT).show()
+
             }else{
                 val persona = " $firstName $lastName"
 
@@ -58,7 +64,17 @@ class MainActivity : AppCompatActivity() {
                 nombre.text.clear()
                 apellido.text.clear()
 
+
             }
+
+            buttonEnviar.setOnClickListener {
+                // Llamo a la actividad 2
+                val intent = Intent(this, MainActivity2::class.java)
+                intent.putStringArrayListExtra("personas", personList)
+                startActivity(intent)
+            }
+
+
 
 
 
